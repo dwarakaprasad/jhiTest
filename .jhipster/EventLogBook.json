@@ -1,0 +1,61 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801170922",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "event_log_book",
+  "fields": [
+    {
+      "fieldName": "uuid",
+      "fieldType": "UUID",
+      "options": {
+        "uidata": "label"
+      }
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "archieved",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "EventLogBook",
+  "pageinate": true,
+  "pagination": "no",
+  "profileSection": "{name: bobby, dummy:{ breaking: true, notBreaking: false}}",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "eventLogBook",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "eventLog",
+      "otherEntityRelationshipName": "eventLogBook",
+      "relationshipName": "eventLog",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}
