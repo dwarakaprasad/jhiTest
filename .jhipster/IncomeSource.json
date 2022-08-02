@@ -1,0 +1,46 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213804",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "income_source",
+  "fields": [
+    {
+      "fieldName": "incomeType",
+      "fieldType": "INCOMETYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "JOB,BUSINESS,GOV"
+    },
+    {
+      "fieldName": "incomeAmount",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "IncomeSource",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "employer",
+      "otherEntityRelationshipName": "incomeSource",
+      "ownerSide": true,
+      "relationshipName": "employer",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "applicant",
+      "otherEntityRelationshipName": "incomeSource",
+      "relationshipName": "applicant",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

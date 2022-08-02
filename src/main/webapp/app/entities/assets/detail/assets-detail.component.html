@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="assets">
+      <h2 data-cy="assetsDetailsHeading"><span jhiTranslate="myApp.assets.detail.title">Assets</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ assets.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.assets.name">Name</span></dt>
+        <dd>
+          <span>{{ assets.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.assets.assetType">Asset Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'myApp.ASSETTYPE.' + assets.assetType }}">{{ assets.assetType }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.assets.address">Address</span></dt>
+        <dd>
+          <div *ngIf="assets.address">
+            <a [routerLink]="['/address', assets.address?.id, 'view']">{{ assets.address?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/assets', assets.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

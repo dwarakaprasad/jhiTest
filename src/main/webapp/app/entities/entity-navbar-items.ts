@@ -1,22 +1,47 @@
 export const EntityNavbarItems = [
   {
-    name: 'EventLogBook',
-    route: 'event-log-book',
-    translationKey: 'global.menu.entities.eventLogBook',
+    name: 'Customer',
+    route: 'customer',
+    translationKey: 'global.menu.entities.customer',
   },
   {
-    name: 'EventLog',
-    route: 'event-log',
-    translationKey: 'global.menu.entities.eventLog',
+    name: 'PaymentInfo',
+    route: 'payment-info',
+    translationKey: 'global.menu.entities.paymentInfo',
   },
   {
-    name: 'Tags',
-    route: 'tags',
-    translationKey: 'global.menu.entities.tags',
+    name: 'Address',
+    route: 'address',
+    translationKey: 'global.menu.entities.address',
   },
   {
-    name: 'EventLogType',
-    route: 'event-log-type',
-    translationKey: 'global.menu.entities.eventLogType',
+    name: 'Passport',
+    route: 'passport',
+    translationKey: 'global.menu.entities.passport',
+  },
+  {
+    name: 'Application',
+    route: 'application',
+    translationKey: 'global.menu.entities.application',
+  },
+  {
+    name: 'Applicant',
+    route: 'applicant',
+    translationKey: 'global.menu.entities.applicant',
+  },
+  {
+    name: 'Assets',
+    route: 'assets',
+    translationKey: 'global.menu.entities.assets',
+  },
+  {
+    name: 'IncomeSource',
+    route: 'income-source',
+    translationKey: 'global.menu.entities.incomeSource',
+  },
+  {
+    name: 'Employer',
+    route: 'employer',
+    translationKey: 'global.menu.entities.employer',
   },
 ];

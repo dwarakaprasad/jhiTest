@@ -1,0 +1,29 @@
+{
+  "myApp": {
+    "passport": {
+      "home": {
+        "title": "Passports",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Passport",
+        "createOrEditLabel": "Create or edit a Passport",
+        "notFound": "No Passports found"
+      },
+      "created": "A new Passport is created with identifier {{ param }}",
+      "updated": "A Passport is updated with identifier {{ param }}",
+      "deleted": "A Passport is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Passport {{ id }}?"
+      },
+      "detail": {
+        "title": "Passport"
+      },
+      "id": "ID",
+      "identity": "Identity",
+      "expiry": "Expiry",
+      "issuingCountry": "Issuing Country",
+      "documentNumber": "Document Number",
+      "passportType": "Passport Type",
+      "customer": "Customer"
+    }
+  }
+}

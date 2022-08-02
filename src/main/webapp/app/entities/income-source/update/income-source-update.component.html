@@ -1,0 +1,130 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-income-source-heading" data-cy="IncomeSourceCreateUpdateHeading" jhiTranslate="myApp.incomeSource.home.createOrEditLabel">
+        Create or edit a Income Source
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.incomeSource.incomeType" for="field_incomeType">Income Type</label>
+          <select class="form-control" name="incomeType" formControlName="incomeType" id="field_incomeType" data-cy="incomeType">
+            <option [ngValue]="null">{{ 'myApp.INCOMETYPE.null' | translate }}</option>
+            <option *ngFor="let iNCOMETYPE of iNCOMETYPEValues" [value]="iNCOMETYPE">
+              {{ 'myApp.INCOMETYPE.' + iNCOMETYPE | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('incomeType')!.invalid && (editForm.get('incomeType')!.dirty || editForm.get('incomeType')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('incomeType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.incomeSource.incomeAmount" for="field_incomeAmount">Income Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="incomeAmount"
+            id="field_incomeAmount"
+            data-cy="incomeAmount"
+            formControlName="incomeAmount"
+          />
+          <div
+            *ngIf="editForm.get('incomeAmount')!.invalid && (editForm.get('incomeAmount')!.dirty || editForm.get('incomeAmount')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('incomeAmount')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('incomeAmount')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.incomeSource.duration" for="field_duration">Duration</label>
+          <input type="number" class="form-control" name="duration" id="field_duration" data-cy="duration" formControlName="duration" />
+          <div *ngIf="editForm.get('duration')!.invalid && (editForm.get('duration')!.dirty || editForm.get('duration')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('duration')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('duration')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.incomeSource.employer" for="field_employer">Employer</label>
+          <select class="form-control" id="field_employer" data-cy="employer" name="employer" formControlName="employer">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="employerOption.id === editForm.get('employer')!.value?.id ? editForm.get('employer')!.value : employerOption"
+              *ngFor="let employerOption of employersCollection; trackBy: trackEmployerById"
+            >
+              {{ employerOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.incomeSource.applicant" for="field_applicant">Applicant</label>
+          <select class="form-control" id="field_applicant" data-cy="applicant" name="applicant" formControlName="applicant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="applicantOption.id === editForm.get('applicant')!.value?.id ? editForm.get('applicant')!.value : applicantOption"
+              *ngFor="let applicantOption of applicantsSharedCollection; trackBy: trackApplicantById"
+            >
+              {{ applicantOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

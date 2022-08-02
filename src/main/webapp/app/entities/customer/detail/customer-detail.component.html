@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customer">
+      <h2 data-cy="customerDetailsHeading"><span jhiTranslate="myApp.customer.detail.title">Customer</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customer.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.customer.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ customer.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.customer.middleName">Middle Name</span></dt>
+        <dd>
+          <span>{{ customer.middleName }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.customer.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ customer.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.customer.dob">Dob</span></dt>
+        <dd>
+          <span>{{ customer.dob | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.customer.gender">Gender</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'myApp.GENDER.' + customer.gender }}">{{ customer.gender }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.customer.passport">Passport</span></dt>
+        <dd>
+          <div *ngIf="customer.passport">
+            <a [routerLink]="['/passport', customer.passport?.id, 'view']">{{ customer.passport?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customer', customer.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

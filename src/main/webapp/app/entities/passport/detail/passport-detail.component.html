@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="passport">
+      <h2 data-cy="passportDetailsHeading"><span jhiTranslate="myApp.passport.detail.title">Passport</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ passport.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.passport.identity">Identity</span></dt>
+        <dd>
+          <span>{{ passport.identity }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.passport.expiry">Expiry</span></dt>
+        <dd>
+          <span>{{ passport.expiry | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.passport.issuingCountry">Issuing Country</span></dt>
+        <dd>
+          <span>{{ passport.issuingCountry }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.passport.documentNumber">Document Number</span></dt>
+        <dd>
+          <span>{{ passport.documentNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.passport.passportType">Passport Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'myApp.PASSPORTTYPE.' + passport.passportType }}">{{ passport.passportType }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/passport', passport.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

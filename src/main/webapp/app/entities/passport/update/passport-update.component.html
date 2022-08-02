@@ -1,0 +1,128 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-passport-heading" data-cy="PassportCreateUpdateHeading" jhiTranslate="myApp.passport.home.createOrEditLabel">
+        Create or edit a Passport
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.passport.identity" for="field_identity">Identity</label>
+          <input type="text" class="form-control" name="identity" id="field_identity" data-cy="identity" formControlName="identity" />
+          <div *ngIf="editForm.get('identity')!.invalid && (editForm.get('identity')!.dirty || editForm.get('identity')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('identity')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.passport.expiry" for="field_expiry">Expiry</label>
+          <div class="input-group">
+            <input
+              id="field_expiry"
+              data-cy="expiry"
+              type="text"
+              class="form-control"
+              name="expiry"
+              ngbDatepicker
+              #expiryDp="ngbDatepicker"
+              formControlName="expiry"
+            />
+            <button type="button" class="btn btn-secondary" (click)="expiryDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('expiry')!.invalid && (editForm.get('expiry')!.dirty || editForm.get('expiry')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('expiry')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.passport.issuingCountry" for="field_issuingCountry">Issuing Country</label>
+          <input
+            type="text"
+            class="form-control"
+            name="issuingCountry"
+            id="field_issuingCountry"
+            data-cy="issuingCountry"
+            formControlName="issuingCountry"
+          />
+          <div
+            *ngIf="
+              editForm.get('issuingCountry')!.invalid && (editForm.get('issuingCountry')!.dirty || editForm.get('issuingCountry')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('issuingCountry')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.passport.documentNumber" for="field_documentNumber">Document Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="documentNumber"
+            id="field_documentNumber"
+            data-cy="documentNumber"
+            formControlName="documentNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.passport.passportType" for="field_passportType">Passport Type</label>
+          <select class="form-control" name="passportType" formControlName="passportType" id="field_passportType" data-cy="passportType">
+            <option [ngValue]="null">{{ 'myApp.PASSPORTTYPE.null' | translate }}</option>
+            <option *ngFor="let pASSPORTTYPE of pASSPORTTYPEValues" [value]="pASSPORTTYPE">
+              {{ 'myApp.PASSPORTTYPE.' + pASSPORTTYPE | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="editForm.get('passportType')!.invalid && (editForm.get('passportType')!.dirty || editForm.get('passportType')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('passportType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

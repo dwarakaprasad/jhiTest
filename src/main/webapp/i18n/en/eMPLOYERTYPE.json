@@ -1,0 +1,10 @@
+{
+  "myApp": {
+    "EMPLOYERTYPE": {
+      "null": "",
+      "INC": "INC",
+      "LLC": "LLC",
+      "PLTD": "PLTD"
+    }
+  }
+}

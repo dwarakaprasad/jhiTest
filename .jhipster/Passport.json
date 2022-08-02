@@ -1,0 +1,49 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213404",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "passport",
+  "fields": [
+    {
+      "fieldName": "identity",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "expiry",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "issuingCountry",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "documentNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "passportType",
+      "fieldType": "PASSPORTTYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DIPLOMATIC,REGULAR"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Passport",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "passport",
+      "ownerSide": false,
+      "relationshipName": "customer",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

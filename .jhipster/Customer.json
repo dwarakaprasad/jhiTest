@@ -1,0 +1,61 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213104",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "customer",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "middleName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dob",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "GENDER",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MALE,FEMALE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Customer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "passport",
+      "otherEntityRelationshipName": "customer",
+      "ownerSide": true,
+      "relationshipName": "passport",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "paymentInfo",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "paymentInfo",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "address",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

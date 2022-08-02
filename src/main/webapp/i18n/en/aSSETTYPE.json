@@ -1,0 +1,9 @@
+{
+  "myApp": {
+    "ASSETTYPE": {
+      "null": "",
+      "MOVABLE": "MOVABLE",
+      "CASH": "CASH"
+    }
+  }
+}

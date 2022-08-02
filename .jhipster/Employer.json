@@ -1,0 +1,36 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213904",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "employer",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ein",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "started",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "employerType",
+      "fieldType": "EMPLOYERTYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INC,LLC,PLTD"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Employer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

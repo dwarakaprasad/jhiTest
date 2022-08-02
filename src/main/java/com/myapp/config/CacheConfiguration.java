@@ -48,14 +48,21 @@ public class CacheConfiguration {
             createCache(cm, com.myapp.domain.User.class.getName());
             createCache(cm, com.myapp.domain.Authority.class.getName());
             createCache(cm, com.myapp.domain.User.class.getName() + ".authorities");
-            createCache(cm, com.myapp.domain.EventLogBook.class.getName());
-            createCache(cm, com.myapp.domain.EventLogBook.class.getName() + ".eventLogs");
-            createCache(cm, com.myapp.domain.EventLog.class.getName());
-            createCache(cm, com.myapp.domain.EventLog.class.getName() + ".tags");
-            createCache(cm, com.myapp.domain.EventLog.class.getName() + ".eventLogTypes");
-            createCache(cm, com.myapp.domain.Tags.class.getName());
-            createCache(cm, com.myapp.domain.Tags.class.getName() + ".eventLogs");
-            createCache(cm, com.myapp.domain.EventLogType.class.getName());
+            createCache(cm, com.myapp.domain.Customer.class.getName());
+            createCache(cm, com.myapp.domain.Customer.class.getName() + ".paymentInfos");
+            createCache(cm, com.myapp.domain.Customer.class.getName() + ".addresses");
+            createCache(cm, com.myapp.domain.PaymentInfo.class.getName());
+            createCache(cm, com.myapp.domain.Address.class.getName());
+            createCache(cm, com.myapp.domain.Passport.class.getName());
+            createCache(cm, com.myapp.domain.Application.class.getName());
+            createCache(cm, com.myapp.domain.Application.class.getName() + ".applicants");
+            createCache(cm, com.myapp.domain.Applicant.class.getName());
+            createCache(cm, com.myapp.domain.Applicant.class.getName() + ".incomeSources");
+            createCache(cm, com.myapp.domain.Applicant.class.getName() + ".assets");
+            createCache(cm, com.myapp.domain.Assets.class.getName());
+            createCache(cm, com.myapp.domain.Assets.class.getName() + ".applicants");
+            createCache(cm, com.myapp.domain.IncomeSource.class.getName());
+            createCache(cm, com.myapp.domain.Employer.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

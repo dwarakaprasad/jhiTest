@@ -1,0 +1,9 @@
+{
+  "myApp": {
+    "GENDER": {
+      "null": "",
+      "MALE": "MALE",
+      "FEMALE": "FEMALE"
+    }
+  }
+}

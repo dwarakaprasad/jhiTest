@@ -1,0 +1,28 @@
+{
+  "myApp": {
+    "incomeSource": {
+      "home": {
+        "title": "Income Sources",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Income Source",
+        "createOrEditLabel": "Create or edit a Income Source",
+        "notFound": "No Income Sources found"
+      },
+      "created": "A new Income Source is created with identifier {{ param }}",
+      "updated": "A Income Source is updated with identifier {{ param }}",
+      "deleted": "A Income Source is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Income Source {{ id }}?"
+      },
+      "detail": {
+        "title": "Income Source"
+      },
+      "id": "ID",
+      "incomeType": "Income Type",
+      "incomeAmount": "Income Amount",
+      "duration": "Duration",
+      "employer": "Employer",
+      "applicant": "Applicant"
+    }
+  }
+}

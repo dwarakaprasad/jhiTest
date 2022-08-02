@@ -1,0 +1,9 @@
+{
+  "myApp": {
+    "PASSPORTTYPE": {
+      "null": "",
+      "DIPLOMATIC": "DIPLOMATIC",
+      "REGULAR": "REGULAR"
+    }
+  }
+}

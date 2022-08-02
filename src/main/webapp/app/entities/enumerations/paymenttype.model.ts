@@ -1,0 +1,7 @@
+export enum PAYMENTTYPE {
+  CREDIT = 'CREDIT',
+
+  DEBIT = 'DEBIT',
+
+  DIRECT_PAY = 'DIRECT_PAY',
+}

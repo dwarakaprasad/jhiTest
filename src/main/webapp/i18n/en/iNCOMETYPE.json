@@ -1,0 +1,10 @@
+{
+  "myApp": {
+    "INCOMETYPE": {
+      "null": "",
+      "JOB": "JOB",
+      "BUSINESS": "BUSINESS",
+      "GOV": "GOV"
+    }
+  }
+}

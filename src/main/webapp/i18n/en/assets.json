@@ -1,0 +1,27 @@
+{
+  "myApp": {
+    "assets": {
+      "home": {
+        "title": "Assets",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Assets",
+        "createOrEditLabel": "Create or edit a Assets",
+        "notFound": "No Assets found"
+      },
+      "created": "A new Assets is created with identifier {{ param }}",
+      "updated": "A Assets is updated with identifier {{ param }}",
+      "deleted": "A Assets is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Assets {{ id }}?"
+      },
+      "detail": {
+        "title": "Assets"
+      },
+      "id": "ID",
+      "name": "Name",
+      "assetType": "Asset Type",
+      "address": "Address",
+      "applicant": "Applicant"
+    }
+  }
+}

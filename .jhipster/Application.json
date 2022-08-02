@@ -1,0 +1,48 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213504",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "application",
+  "fields": [
+    {
+      "fieldName": "applicationType",
+      "fieldType": "APPLICATIONTYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DL,PASSPORT"
+    },
+    {
+      "fieldName": "initiationdate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "submissionDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "finalizationdate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "applicationIdentifier",
+      "fieldType": "UUID"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Application",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicant",
+      "otherEntityRelationshipName": "application",
+      "relationshipName": "applicant",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

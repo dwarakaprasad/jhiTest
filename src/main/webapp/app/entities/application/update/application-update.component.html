@@ -1,0 +1,175 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-application-heading" data-cy="ApplicationCreateUpdateHeading" jhiTranslate="myApp.application.home.createOrEditLabel">
+        Create or edit a Application
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.application.applicationType" for="field_applicationType">Application Type</label>
+          <select
+            class="form-control"
+            name="applicationType"
+            formControlName="applicationType"
+            id="field_applicationType"
+            data-cy="applicationType"
+          >
+            <option [ngValue]="null">{{ 'myApp.APPLICATIONTYPE.null' | translate }}</option>
+            <option *ngFor="let aPPLICATIONTYPE of aPPLICATIONTYPEValues" [value]="aPPLICATIONTYPE">
+              {{ 'myApp.APPLICATIONTYPE.' + aPPLICATIONTYPE | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('applicationType')!.invalid &&
+              (editForm.get('applicationType')!.dirty || editForm.get('applicationType')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('applicationType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.application.initiationdate" for="field_initiationdate">Initiationdate</label>
+          <div class="input-group">
+            <input
+              id="field_initiationdate"
+              data-cy="initiationdate"
+              type="text"
+              class="form-control"
+              name="initiationdate"
+              ngbDatepicker
+              #initiationdateDp="ngbDatepicker"
+              formControlName="initiationdate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="initiationdateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('initiationdate')!.invalid && (editForm.get('initiationdate')!.dirty || editForm.get('initiationdate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('initiationdate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.application.submissionDate" for="field_submissionDate">Submission Date</label>
+          <div class="input-group">
+            <input
+              id="field_submissionDate"
+              data-cy="submissionDate"
+              type="text"
+              class="form-control"
+              name="submissionDate"
+              ngbDatepicker
+              #submissionDateDp="ngbDatepicker"
+              formControlName="submissionDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="submissionDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('submissionDate')!.invalid && (editForm.get('submissionDate')!.dirty || editForm.get('submissionDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('submissionDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.application.finalizationdate" for="field_finalizationdate">Finalizationdate</label>
+          <div class="input-group">
+            <input
+              id="field_finalizationdate"
+              data-cy="finalizationdate"
+              type="text"
+              class="form-control"
+              name="finalizationdate"
+              ngbDatepicker
+              #finalizationdateDp="ngbDatepicker"
+              formControlName="finalizationdate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="finalizationdateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('finalizationdate')!.invalid &&
+              (editForm.get('finalizationdate')!.dirty || editForm.get('finalizationdate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('finalizationdate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="myApp.application.applicationIdentifier" for="field_applicationIdentifier"
+            >Application Identifier</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="applicationIdentifier"
+            id="field_applicationIdentifier"
+            data-cy="applicationIdentifier"
+            formControlName="applicationIdentifier"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -11,45 +11,128 @@ application {
   entities *
 }
 
-@filter
-@pageinate
-@profileSection("{name: bobby, dummy:{ breaking: true, notBreaking: false}}")
-entity EventLogBook {
-	@uidata(label) uuid UUID,
-	createdDate ZonedDateTime,
-    updatedDate ZonedDateTime,
-    name String required,
-   	description String required,
-    archieved Boolean 
-}
-@filter
-@pageinate
-entity EventLog {
-	uuid UUID,
-    name String, 
-	detail String required,
-    createdDate ZonedDateTime,
-    updatedDate ZonedDateTime
-}
-entity Tags{
-	name String,
-    description String
-}
-entity EventLogType{
-	name String,
-    template String
+entity Customer {
+	firstName String required
+    middleName String
+    lastName String required
+    dob LocalDate required
+    gender GENDER required
 }
 
-relationship ManyToOne{
-	EventLogType to EventLog
+enum GENDER {
+	MALE, FEMALE
 }
-relationship OneToMany{
-	EventLogBook to EventLog
+
+enum PAYMENTTYPE {
+	CREDIT, DEBIT, DIRECT_PAY
 }
-relationship ManyToMany {
-  	EventLog to Tags
+
+entity PaymentInfo {
+	paymentType PAYMENTTYPE required
+    number Long required
+    expiry LocalDate
+    security Long
 }
+
+enum ADDRESSTYPE {
+	RESIDENTIAL, BILLING, MAILING
+}
+
+entity Address {
+	street1 String required
+    street2 String
+    city String required
+    state String
+    zipCode Long required
+}
+
+enum PASSPORTTYPE {
+	DIPLOMATIC, REGULAR
+}
+
+entity Passport {
+	identity String required
+    expiry LocalDate required
+    issuingCountry String required
+    documentNumber String
+    passportType PASSPORTTYPE required
+}
+
+relationship OneToMany {
+	Customer to PaymentInfo
+    Customer to Address
+}
+
 relationship OneToOne {
-    EventLogBook to User
-    EventLog to User
+	Customer to Passport
 }
+
+enum APPLICATIONTYPE {
+	DL, PASSPORT
+}
+
+entity Application {
+	applicationType APPLICATIONTYPE required
+    initiationdate LocalDate required
+    submissionDate LocalDate required
+    finalizationdate LocalDate required
+    applicationIdentifier UUID
+}
+
+entity Applicant {
+	firstName String required
+    middleName String
+    lastName String required
+    dob LocalDate required
+    gender GENDER required
+}
+
+enum ASSETTYPE {
+	MOVABLE, CASH
+}
+
+entity Assets {
+	name String required
+    assetType ASSETTYPE required
+}
+
+enum INCOMETYPE {
+	JOB, BUSINESS, GOV
+}
+
+entity IncomeSource {
+	incomeType INCOMETYPE required
+    incomeAmount Double required
+    duration Long required
+}
+
+enum EMPLOYERTYPE {
+	INC, LLC, PLTD
+}
+
+entity Employer {
+	name String required
+    ein Long required
+    started LocalDate
+    employerType EMPLOYERTYPE required
+}
+
+relationship OneToMany {
+	Application to Applicant
+    Applicant to IncomeSource
+}
+
+relationship ManyToMany {
+	Applicant to Assets
+}
+
+relationship OneToOne {
+	Assets{address} to Address
+    IncomeSource{employer} to Employer
+}
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with brm

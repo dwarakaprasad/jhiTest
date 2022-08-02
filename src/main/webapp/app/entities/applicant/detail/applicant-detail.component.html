@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="applicant">
+      <h2 data-cy="applicantDetailsHeading"><span jhiTranslate="myApp.applicant.detail.title">Applicant</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ applicant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.applicant.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ applicant.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.applicant.middleName">Middle Name</span></dt>
+        <dd>
+          <span>{{ applicant.middleName }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.applicant.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ applicant.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.applicant.dob">Dob</span></dt>
+        <dd>
+          <span>{{ applicant.dob | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.applicant.gender">Gender</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'myApp.GENDER.' + applicant.gender }}">{{ applicant.gender }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.applicant.assets">Assets</span></dt>
+        <dd>
+          <span *ngFor="let assets of applicant.assets; let last = last">
+            <a [routerLink]="['/assets', assets?.id, 'view']">{{ assets.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="myApp.applicant.application">Application</span></dt>
+        <dd>
+          <div *ngIf="applicant.application">
+            <a [routerLink]="['/application', applicant.application?.id, 'view']">{{ applicant.application?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/applicant', applicant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

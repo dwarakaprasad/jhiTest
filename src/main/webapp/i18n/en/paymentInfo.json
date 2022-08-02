@@ -1,0 +1,28 @@
+{
+  "myApp": {
+    "paymentInfo": {
+      "home": {
+        "title": "Payment Infos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payment Info",
+        "createOrEditLabel": "Create or edit a Payment Info",
+        "notFound": "No Payment Infos found"
+      },
+      "created": "A new Payment Info is created with identifier {{ param }}",
+      "updated": "A Payment Info is updated with identifier {{ param }}",
+      "deleted": "A Payment Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Info"
+      },
+      "id": "ID",
+      "paymentType": "Payment Type",
+      "number": "Number",
+      "expiry": "Expiry",
+      "security": "Security",
+      "customer": "Customer"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="IncomeSourceHeading">
+    <span jhiTranslate="myApp.incomeSource.home.title">Income Sources</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="myApp.incomeSource.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-income-source"
+        [routerLink]="['/income-source/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myApp.incomeSource.home.createLabel"> Create a new Income Source </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="incomeSources?.length === 0">
+    <span jhiTranslate="myApp.incomeSource.home.notFound">No incomeSources found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="incomeSources && incomeSources.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="myApp.incomeSource.incomeType">Income Type</span></th>
+          <th scope="col"><span jhiTranslate="myApp.incomeSource.incomeAmount">Income Amount</span></th>
+          <th scope="col"><span jhiTranslate="myApp.incomeSource.duration">Duration</span></th>
+          <th scope="col"><span jhiTranslate="myApp.incomeSource.employer">Employer</span></th>
+          <th scope="col"><span jhiTranslate="myApp.incomeSource.applicant">Applicant</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let incomeSource of incomeSources; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/income-source', incomeSource.id, 'view']">{{ incomeSource.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'myApp.INCOMETYPE.' + incomeSource.incomeType }}">{{ incomeSource.incomeType }}</td>
+          <td>{{ incomeSource.incomeAmount }}</td>
+          <td>{{ incomeSource.duration }}</td>
+          <td>
+            <div *ngIf="incomeSource.employer">
+              <a [routerLink]="['/employer', incomeSource.employer?.id, 'view']">{{ incomeSource.employer?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="incomeSource.applicant">
+              <a [routerLink]="['/applicant', incomeSource.applicant?.id, 'view']">{{ incomeSource.applicant?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/income-source', incomeSource.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/income-source', incomeSource.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(incomeSource)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

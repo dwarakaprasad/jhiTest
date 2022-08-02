@@ -1,0 +1,42 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213204",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_info",
+  "fields": [
+    {
+      "fieldName": "paymentType",
+      "fieldType": "PAYMENTTYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CREDIT,DEBIT,DIRECT_PAY"
+    },
+    {
+      "fieldName": "number",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "expiry",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "security",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PaymentInfo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "paymentInfo",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

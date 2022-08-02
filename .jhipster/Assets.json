@@ -1,0 +1,42 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213704",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "assets",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "assetType",
+      "fieldType": "ASSETTYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MOVABLE,CASH"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Assets",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "assets",
+      "ownerSide": true,
+      "relationshipName": "address",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "applicant",
+      "otherEntityRelationshipName": "assets",
+      "ownerSide": false,
+      "relationshipName": "applicant",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employer">
+      <h2 data-cy="employerDetailsHeading"><span jhiTranslate="myApp.employer.detail.title">Employer</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employer.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.employer.name">Name</span></dt>
+        <dd>
+          <span>{{ employer.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.employer.ein">Ein</span></dt>
+        <dd>
+          <span>{{ employer.ein }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.employer.started">Started</span></dt>
+        <dd>
+          <span>{{ employer.started | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.employer.employerType">Employer Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'myApp.EMPLOYERTYPE.' + employer.employerType }}">{{ employer.employerType }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employer', employer.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

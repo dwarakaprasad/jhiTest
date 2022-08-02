@@ -1,0 +1,61 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220801213604",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "applicant",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "middleName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dob",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "GENDER",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MALE,FEMALE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Applicant",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "incomeSource",
+      "otherEntityRelationshipName": "applicant",
+      "relationshipName": "incomeSource",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "assets",
+      "otherEntityRelationshipName": "applicant",
+      "ownerSide": true,
+      "relationshipName": "assets",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "application",
+      "otherEntityRelationshipName": "applicant",
+      "relationshipName": "application",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

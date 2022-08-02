@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="incomeSource">
+      <h2 data-cy="incomeSourceDetailsHeading"><span jhiTranslate="myApp.incomeSource.detail.title">Income Source</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ incomeSource.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.incomeSource.incomeType">Income Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'myApp.INCOMETYPE.' + incomeSource.incomeType }}">{{ incomeSource.incomeType }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.incomeSource.incomeAmount">Income Amount</span></dt>
+        <dd>
+          <span>{{ incomeSource.incomeAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.incomeSource.duration">Duration</span></dt>
+        <dd>
+          <span>{{ incomeSource.duration }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.incomeSource.employer">Employer</span></dt>
+        <dd>
+          <div *ngIf="incomeSource.employer">
+            <a [routerLink]="['/employer', incomeSource.employer?.id, 'view']">{{ incomeSource.employer?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myApp.incomeSource.applicant">Applicant</span></dt>
+        <dd>
+          <div *ngIf="incomeSource.applicant">
+            <a [routerLink]="['/applicant', incomeSource.applicant?.id, 'view']">{{ incomeSource.applicant?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/income-source', incomeSource.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

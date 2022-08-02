@@ -7,10 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "eventLogBook": "Event Log Book",
-        "eventLog": "Event Log",
-        "tags": "Tags",
-        "eventLogType": "Event Log Type",
+        "customer": "Customer",
+        "paymentInfo": "Payment Info",
+        "address": "Address",
+        "passport": "Passport",
+        "application": "Application",
+        "applicant": "Applicant",
+        "assets": "Assets",
+        "incomeSource": "Income Source",
+        "employer": "Employer",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

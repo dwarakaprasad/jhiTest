@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Applicant.
+    -->
+    <changeSet id="20220801213604-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="applicant_id"
+                                 baseTableName="rel_applicant__assets"
+                                 constraintName="fk_rel_applicant__assets__applicant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="applicant"/>
+
+        <addForeignKeyConstraint baseColumnNames="assets_id"
+                                 baseTableName="rel_applicant__assets"
+                                 constraintName="fk_rel_applicant__assets__assets_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="assets"/>
+
+        <addForeignKeyConstraint baseColumnNames="application_id"
+                                 baseTableName="applicant"
+                                 constraintName="fk_applicant__application_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application"/>
+    </changeSet>
+</databaseChangeLog>
